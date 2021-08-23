@@ -1,32 +1,19 @@
-<footer class="t-hackcss-footer">
-  <hr />
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    {% if site.data.ui-text[site.locale].follow_label %}
+      <li><strong>{{ site.data.ui-text[site.locale].follow_label }}</strong></li>
+    {% endif %}
 
-  <h3 class="footer-heading">{{ site.title }}</h3>
+    {% if site.footer.links %}
+      {% for link in site.footer.links %}
+        {% if link.label and link.url %}
+          <li><a href="{{ link.url }}" rel="nofollow noopener noreferrer"><i class="{{ link.icon | default: 'fas fa-link' }}" aria-hidden="true"></i> {{ link.label }}</a></li>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
 
-  <div class="grid t-hackcss-sm-reversed-grid">
+    <li><a href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].feed_label | default: "Feed" }}</a></li>
+  </ul>
+</div>
 
-    <div class="cell -5of12">
-      <div class="contact-list">
-        <p>
-          {{ site.your_name }},
-          <a href="mailto:{{ site.email }}">{{ site.email }}</a>
-        </p>
-
-        {% for social in site.social %}
-          {% assign template = social.service|prepend:"icon-"|append:".html" %}
-          <span class="t-hackcss-social">
-            <i class="t-hackcss-icon">{% include {{ template }} %}</i>
-            <a href="{{ social.link }}">{{ social.username }}</a>
-          </span>
-        {% endfor %}
-      </div>
-    </div>
-
-    <div id="footer-spacer" class="cell -1of12"></div>
-
-    <div class="cell -6of12">
-      <p>{{ site.description }}</p>
-    </div>
-  </div>
-
-</footer>
+<div class="page__footer-copyright">&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}</div>
