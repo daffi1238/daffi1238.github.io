@@ -1,38 +1,36 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    {% include head-custom.html %}
+<html>
 
-{% seo %}
-  </head>
+  {% include head.html %}
 
-  <body>
 
-    <header>
-      <div class="container">
-        <a id="a-title" href="{{ '/' | relative_url }}">
-          <h1>{{ site.title | default: site.github.repository_name }}</h1>
-        </a>
-        <h2>{{ site.description | default: site.github.project_tagline }}</h2>
+  {% if site.theme_mode == 'markdown' %}
+  <body class="hack">
+  {% elsif site.theme_mode == 'standard' %}
+  <body class="standard">
+  {% elsif site.theme_mode == 'dark' %}
+  <body class="hack dark">
+  {% endif %}
 
-        <section id="downloads">
-          {% if site.show_downloads %}
-            <a href="{{ site.github.zip_url }}" class="btn">Download as .zip</a>
-            <a href="{{ site.github.tar_url }}" class="btn">Download as .tar.gz</a>
-          {% endif %}
-          <a href="{{ site.github.repository_url }}" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
-      </div>
-    </header>
+    {% include github-ribbon.html %}
 
     <div class="container">
-      <section id="main_content">
-        {{ content }}
-      </section>
+      <div class="grid">
+        <aside class="cell -3of12" role="navigation">
+          {% include navigation.html %}
+        </aside>
+
+        <main class="cell -9of12">
+          {{ content }}
+        </main>
+      </div>
+
+    {% include footer.html %}
+
     </div>
+
+    <!-- Prism.js -->
+    <script src="https://npmcdn.com/prismjs@1.5.1/prism.js"></script>
   </body>
+
 </html>
