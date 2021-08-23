@@ -1,13 +1,8 @@
 ---
-layout: archive
+layout: articles
+heading: 'Your awesome heading'
+subheading: 'Your awesome subheading'
+banner: 'default'
 ---
 
 {{ content }}
-
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Artículos Recientes" }}</h3>
-
-{% for post in paginator.posts %}
-  {% include archive-single.html %}
-{% endfor %}
-
-{% include paginator.html %}
