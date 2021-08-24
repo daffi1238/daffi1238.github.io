@@ -24,9 +24,9 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
-email: your-email@domain.com
-author: GitHub User
+title: hacke mate
+email: jazz.sumariva@gmail.com
+author: daffi1238
 
 # Copyright setting
 # You can use any html code, currently below placeholders are available:
@@ -43,9 +43,10 @@ author: GitHub User
 copyright: "Unpublished Work (cleft) 2017-{currentYear} {author}"
 
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  This will be a set (More a handful) of articles to help people who would like about cybersecurity.
+  Mi initial plan is resolve, getting to the point, some Hack the Box machines, speak about some techniques
+  and annalyze everything on my mind.
+
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
@@ -57,10 +58,10 @@ yat:
   date_format: "%b %d, %Y"
 
 # If you want more debug log, you can set true
-# debug: false
+debug: true
 
 # If you don't want transparent header, you can set false
-# header_transparent: true
+header_transparent: true
 
 # If you want to change the content width, you can set to another value
 # content_width: "920px"
