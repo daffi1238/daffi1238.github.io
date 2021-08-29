@@ -5,7 +5,6 @@ categories: Guides
 tags: 
 ---
 
-
 ## Introduction
 This will be a post alive that will have updates always, if I can and there is some news to add, the idea is to know the tools, configurations methodology and good practices to be as safe as possible working in our laptop or exposing a service.
 
@@ -13,9 +12,8 @@ The guide is thought to be applied in Debian or equivalent!
 
 
 ## Hardening a Server
-
 ### Firewall rules & Packet Filtering
-
+[Still not]
 ### Services 
 #### 1. SSH
 [REFS]
@@ -98,8 +96,9 @@ Name=keepass
 Comment=
 Icon=
 
-
 ```
+Should we create custom rules in firejail? Sure but that'll the next iteration.
+
 
 #### Configuration for external media
 At the begining Linux don't execute any code after insert a device but we should try to secure this but this will be fill in the future.
