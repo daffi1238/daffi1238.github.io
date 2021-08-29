@@ -6,12 +6,11 @@ tags:
 ---
 
 
-# Introduction
+## Introduction
 This will be a post alive that will have updates always, if I can and there is some news to add, the idea is to know the tools, configurations methodology and good practices to be as safe as possible working in our laptop or exposing a service.
 
 The guide is thought to be applied in Debian or equivalent!
 
-# Hardening
 
 ## Hardening a Server
 
