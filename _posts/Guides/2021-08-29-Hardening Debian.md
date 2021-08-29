@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Hardening Debian"
+categories: Guides
+tags: 
+---
+
 # Introduction
 This will be a post alive that will have updates always, if I can and there is some news to add, the idea is to know the tools, configurations methodology and good practices to be as safe as possible working in our laptop or exposing a service.
 
