@@ -155,3 +155,13 @@ Similar options but additional functionalities to detect rootkits. This can be l
 To know more about detect rootkits investigate about:
 - checksecurity
 - chkrootkit & rkhunter
+
+## Nebula
+**Instalation**
+https://snapcraft.io/install/nebula/debian
+
+### Hardening the kernel for Secure Boot - Matthew Garrett, Nebula
+**https://www.youtube.com/watch?v=fDzAVksopYw**
+-  kexec: kernel execution, just signed modules are able to be execute in the kernel
+- capabilities: NOP
+- 
