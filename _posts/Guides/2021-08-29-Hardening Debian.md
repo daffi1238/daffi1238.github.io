@@ -164,4 +164,18 @@ https://snapcraft.io/install/nebula/debian
 **https://www.youtube.com/watch?v=fDzAVksopYw**
 -  kexec: kernel execution, just signed modules are able to be execute in the kernel
 - capabilities: NOP
-- 
+
+
+
+## Backups
+### rsync
+We can use rsync in local jsut as:
+`sudo rsync -av --delete /etc /home /usr/local /media/ImaginaryDisk/backup`
+```text
+-av archive mode + verbose
+--delete for deleting in the backup the files deleted in the original folders
+```
+But the true powerfull is in the remote backups, specially tunneling through ssh
+`sudo rsync -av --delete --rsh=ssh /etc /home /usr/local remote-sys:/backup`
+
+How should we recover a backup made with rsync?
