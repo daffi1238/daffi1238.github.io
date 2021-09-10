@@ -104,18 +104,18 @@ Should we create custom rules in firejail? Sure but that'll the next iteration.
 At the begining Linux don't execute any code after insert a device but we should try to secure this but this will be fill in the future.
 
 ## Hardening the most
-### Monitoring Logs with logcheck
+#### Monitoring Logs with logcheck
 [REFs]
 [logcheck](http://somebooks.es/recibir-informes-sobre-sucesos-de-ubuntu-server-18-04-lts-con-logcheck/)
 This program monitors logs every hour (by default) and send to the administrator e-mail the unusuals logs messages detected.
 
 
-### Monitoring activity in Real Time
+#### Monitoring activity in Real Time
 We can use top or **htop** to check the process running, the free and busy resources and even change the process priority.
 And could be interesting know about `renice` command to rise o go down the cpu priority for the processes or usign in htop f7 & f8 to modify the nice value
 'u' to inspect the process by user
 
-### Detecting change
+#### Detecting change
 One you have a system (in production or not) installed and configured most system files should be relatively static until an upgrade.
 At first we can just cehck the whole packages installed with the repositories
 `dpkg --verify`
@@ -166,10 +166,79 @@ https://snapcraft.io/install/nebula/debian
 - capabilities: NOP
 
 
+## What if you are responsible of a machine you didn't configure?
+When you have control over a new machine that you didn't deploy but it's in production already we should take some precautions before say formally that we are responsible about the security of this system. This steps are not based in any recommendation program just based on my experience and common sense:
+#### Check processes running
+To see all process running in a tree format
+`ps -faux`
+
+#### Scan sockets
+The min rate is high but working in localhost we shoul'd have problem with be banned. If something goes wrong just decrease de 5000 value.
+
+---
+I generate a reverse shell from localhost to localhsot to inspect some proess in particular with` nc -nlvp 8888` & `bash -c "bash -i >& /dev/tcp/127.0.0.1/8888 0>&1"`
+
+---
+```
+>sudo nmap -sS --min-rate 5000 -Pn -n -p- 127.0.0.1 
+
+>sudo nmap -sF --min-rate 5000 -Pn -n -p- 127.0.0.1 
+
+>sudo nmap -sU --min-rate 5000 -Pn -n -p- 127.0.0.1 
+```
+And having that as reference
+```text
+ss -tulpn
+Netid                    State                     Recv-Q                    Send-Q                                        Local Address:Port                                          Peer Address:Port
+udp                      UNCONN                    0                         0                                                   0.0.0.0:46778                                              0.0.0.0:*
+tcp                      LISTEN                    0                         128                                               127.0.0.1:2015                                               0.0.0.0:*                                                             
+```
+or to see the active connections:
+```text
+ss -tulpan
+tcp                 ESTAB                    0                    0                                      127.0.0.1:8888                                      127.0.0.1:47140                users:(("nc",pid=17529,fd=4))   
+
+tcp                 ESTAB                    0                    0                                      127.0.0.1:47140                                     127.0.0.1:8888                 users:(("bash",pid=17531,fd=2),("bash",pid=17531,fd=1),("bash",pid=17531,fd=0))               
+
+```
+Where:
+- t: tcp ports
+- u: udp ports
+- -l: listening
+- p: Get user and pid of the process
+- n: show port in numerical format
+- a: Show active connections
+
+We need to remember that a revershell just appear in active connections just inspect them are fundamental as well.
+#### Scan Processes
+Whit this last step we have a relation between a pid and a process, let's annalyze the pid related to the process that return us a revershell
+```text
+users:(("bash",pid=17531,fd=2),("bash",pid=17531,fd=1),("bash",pid=17531,fd=0))
+```
+```text
+➜  ~ lsof -i 4 -a -p 17531
+COMMAND   PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+bash    17531 deby    0u  IPv4 409634      0t0  TCP localhost:47140->localhost:8888 (ESTABLISHED)
+bash    17531 deby    1u  IPv4 409634      0t0  TCP localhost:47140->localhost:8888 (ESTABLISHED)
+bash    17531 deby    2u  IPv4 409634      0t0  TCP localhost:47140->localhost:8888 (ESTABLISHED)
+```
+or you could use fuser to go from the port to the proccess
+```text
+fuser 47140/tcp
+	47140/tcp:           17531
+
+## Now just find the file executed
+➜ ls -l /proc/17531/exe 
+	lrwxrwxrwx 1 deby deby 0 sep  6 09:43 /proc/17531/exe -> /usr/bin/bash
+```
+
+With this you can know everything about the process and even annalyze the traffic of the process filtering through the port.
+`sudo tcpdump -i lo -port 8888`
+
 
 ## Backups
-### rsync
-We can use rsync in local jsut as:
+#### rsync
+We can use rsync in local just as:
 `sudo rsync -av --delete /etc /home /usr/local /media/ImaginaryDisk/backup`
 ```text
 -av archive mode + verbose
