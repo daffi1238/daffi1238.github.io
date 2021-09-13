@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "AV Evasion"
+title: "Create and deliver a Microsoft office malicious file"
 categories: Guides
 tags: 
 ---
@@ -119,7 +119,12 @@ msf6 exploit(multi/handler) > exploit
 
 -----------
 
+### CVE-2021-40444
+https://github.com/lockedbyte/CVE-2021-40444
 
+
+
+# AV evasion
 ### msfvenom
 With metasploit we can get malicious code to 
 	a) Skip AV protection
