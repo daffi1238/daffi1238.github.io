@@ -2,7 +2,7 @@
 layout: post
 title: "HTB - Friendzone"
 categories: htb
-tags: linux directory_path_traversal smb autopwn
+tags: linux directory_path_traversal smb dns_zone_transfer_attack autopwn
 ---
 
 ## Enumeration & Penetration
@@ -140,6 +140,8 @@ friendzone.red.         604800  IN      SOA     localhost. root.localhost. 2 604
 
 ```
 And we get some news subdomains available to access. Don't forget add it to the /etc/hosts file.
+
+You could do this attack using `host -t axfr` as well
 
 ### http & https (80 & 443)
 ```text
