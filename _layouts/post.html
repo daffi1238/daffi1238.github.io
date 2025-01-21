@@ -1,77 +1,37 @@
 ---
-layout: framework
-banner:
-banner_html: post-header.html
-hidden: []
-sidebar:
-  - article-menu
+layout: page
 ---
 
-<div class="post">
-  <section>
+<h1><b>{{ page.title }}</b></h1>
 
-    {%- assign name = 'banner' -%}
-    {%- include functions.html func='get_value' -%}
-    {%- assign banner = return -%}
+<p class="post-metadata text-muted">
+  {{ page.date | date_to_long_string }} -  
+  <b>
+  {%- assign words = content | number_of_words -%}
+  {%- if words < 360 -%}
+    less than 1 min read time
+  {%- else -%}
+    {{ words | divided_by: 180 }} mins read time
+  {%- endif -%}
+  </b>
 
-    {%- assign name = 'hidden' -%}
-    {%- include functions.html func='get_value' -%}
-    {%- assign hidden = return -%}
+  <br>
 
-    {%- assign result = hidden | where_exp: "item", "item == 'header'" -%}
-    {%- if banner == nil and result.size == 0 -%}
-    {%- include views/post-header.html -%}
-    {%- endif -%}
+  {%- if page.tags != empty -%}
+    Tags: 
+    {% for tag in page.tags %}
+    <a class="text-decoration-none no-underline" href="{{ tag | slugify | prepend:'/blog/tags#' | relative_url }}">
+      <span class="tag badge badge-pill text-primary border border-primary">{{ tag }}</span>
+    </a>
+    {% endfor %}
+  {%- endif -%}
 
-    {%- include views/article.html -%}
+</p>
 
-    {%- assign result = hidden | where_exp: "item", "item == 'navigator'" -%}
-    {%- if result.size == 0 -%}
-    <div class="post-nav">
-      {%- if page.previous -%}
-        <a class="previous" href="{{ page.previous.url | relative_url }}" title="{{
-          page.previous.title | escape }}">{{ page.previous.title | escape | truncatewords: 6 }}</a>
-      {%- else -%}
-      <span></span>
-      {%- endif -%}
+{{ content }}
 
-      {%- if page.next -%}
-        <a class="next" href="{{ page.next.url | relative_url }}" title="{{ page.next.title | escape }}">{{ page.next.title | escape | truncatewords: 6 }}</a>
-      {%- else -%}
-      <span></span>
-      {%- endif -%}
-    </div>
-    {%- endif -%}
-
-    {%- assign result = hidden | where_exp: "item", "item == 'related_posts'" -%}
-    {%- if result.size == 0 -%}
-    <div class="post-related">
-      <div>Related Articles</div>
-      <ul>
-        {% assign posts = site[page.collection] | sample:4 %}
-        {%- for post in posts -%}
-        <li><a class="post-link" href="{{post.url | relative_url}}" title="{{ page.next.title | escape }}">{{ post.title | escape | truncatewords: 12 }}</a></li>
-        {%- endfor -%}
-      </ul>
-    </div>
-    {%- endif -%}
-
-    {%- assign result = hidden | where_exp: "item", "item == 'comments'" -%}
-    {%- if result.size == 0 -%}
-    <div class="post-comments">
-      {%- if page.comments != false -%}
-
-      {%- if site.disqus.shortname -%}
-      {%- include extensions/comments/disqus.html -%}
-      {%- endif -%}
-
-      {%- if site.gitment.username -%}
-      {%- include extensions/comments/gitment.html -%}
-      {%- endif -%}
-
-      {%- endif -%}
-    </div>
-    {%- endif -%}
-
-  </section>
+{% if page.comments %}
+<div class="pt-5">
+  {% include blog/disqus.html %}
 </div>
+{% endif %}
