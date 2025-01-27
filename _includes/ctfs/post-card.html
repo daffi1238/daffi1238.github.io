@@ -4,46 +4,46 @@
 {%- assign badge_style = 'badge-dark' -%}
 
 {%- comment -%} Update Styles {%- endcomment -%}
-{%- if post.style == 'fill' -%}
-  {%- assign card_style = post.color | prepend: 'bg-' -%}
-  {%- if post.color != 'light' -%}
+{%- if ctf.style == 'fill' -%}
+  {%- assign card_style = ctf.color | prepend: 'bg-' -%}
+  {%- if ctf.color != 'light' -%}
     {%- assign text_style  = 'text-white' -%}
     {%- assign badge_style = 'badge-light text-' -%}
-    {%- assign badge_style = badge_style | append: post.color -%}
+    {%- assign badge_style = badge_style | append: ctf.color -%}
   {%- endif -%}
 {%- else -%}
-  {%- assign card_style = post.color | prepend: 'border border-' -%}
-  {%- if post.color -%}
-    {%- assign badge_style =  post.color | prepend: 'badge-' -%}
+  {%- assign card_style = ctf.color | prepend: 'border border-' -%}
+  {%- if ctf.color -%}
+    {%- assign badge_style =  ctf.color | prepend: 'badge-' -%}
   {%- endif -%}
 {%- endif -%}
 
 {%- comment -%} Determine Post URL {%- endcomment -%}
-{%- if post.external_url -%}
-  {%- assign post_url = post.external_url -%}
+{%- if ctf.external_url -%}
+  {%- assign post_url = ctf.external_url -%}
 {%- else -%}
-  {%- assign post_url = post.url | relative_url -%}
+  {%- assign post_url = ctf.url | relative_url -%}
 {%- endif -%}
     
 <div class="col-lg-6 my-3 wow animated fadeIn" data-wow-delay=".15s">
-  <a href="{{ post_url }}" class="post card {{ card_style }}" {%- if post.external_url and site.open_new_tab -%} target="_blank" {%- endif -%}>
+  <a href="{{ post_url }}" class="post card {{ card_style }}" {%- if ctf.external_url and site.open_new_tab -%} target="_blank" {%- endif -%}>
     <div class="card-body {{ text_style }}">
-      <h3 class="card-title">{{ post.title }}</h3>
+      <h3 class="card-title">{{ ctf.title }}</h3>
       <p class="card-text">
-        {% for tag in post.tags %}
+        {% for tag in ctf.tags %}
         <span class="badge {{ badge_style }}">{{ tag }}</span>
         {% endfor %}
       </p>
       <p class="card-text">
-        {%- if post.description -%}
-        {{ post.description }}
+        {%- if ctf.description -%}
+        {{ ctf.description }}
         {%- else -%}
-        {{ post.content | truncatewords: 25, "<small><i>  read more...</i></small>" }}
+        {{ ctf.content | truncatewords: 25, "<small><i>  read more...</i></small>" }}
         {%- endif -%}
       </p>
     </div>
     <div class="card-footer {{ text_style }}">
-      {{ post.date | date_to_long_string }}
+      {{ ctf.date | date_to_long_string }}
     </div>
   </a>
 </div>
