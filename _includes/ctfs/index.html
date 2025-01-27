@@ -1,7 +1,14 @@
-<div class="card-group mt-2">
+---
+title: CTFs
+layout: page
+---
 
+<h1>Lista de CTFs</h1>
+
+<ul>
   {% for ctf in site.ctfs %}
-    {% include ctfs/post-card.html %}
+    <li>
+      <a href="{{ ctf.url }}">{{ ctf.title }}</a>
+    </li>
   {% endfor %}
-
-</div>
+</ul>
