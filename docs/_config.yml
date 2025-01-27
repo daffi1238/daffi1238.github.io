@@ -27,25 +27,25 @@ nav_exclude:                                            # The following paths ar
 author:
   name              : daffi1238
   image             : https://i.imgur.com/uyDNQnn.jpg
-  behance           : your_username
-# dribbble          : your_username
+  behance           : daffi1238
+# dribbble          : daffi1238
   email             : username@domain.com
-  facebook          : your_username
-  github            : your_username
-# gitlab            : your_username
-# instagram         : your_username
-# kaggle            : your_username
-  linkedin          : your_username
-  medium            : your_username
-# soundcloud        : your_username
-# spotify           : your_username
+  facebook          : daffi1238
+  github            : daffi1238
+# gitlab            : daffi1238
+# instagram         : daffi1238
+# kaggle            : daffi1238
+  linkedin          : daffi1238
+  medium            : daffi1238
+# soundcloud        : daffi1238
+# spotify           : daffi1238
 # stackoverflow     : your_user_id
-# tumblr            : your_username.tumblr.com
-# twitch            : your_username
-  twitter           : your_username
-# vimeo             : your_username
+# tumblr            : daffi1238.tumblr.com
+# twitch            : daffi1238
+  twitter           : daffi1238
+# vimeo             : daffi1238
 # youtube           : your_channel_name
-# keybase           : your_username
+# keybase           : daffi1238
 
 
 ### Posts ###
@@ -59,6 +59,9 @@ collections:
     permalink: /projects/:name
   elements:                                             # For Documentation Only
     output: true                                        # For Documentation Only
+  ctfs:                                                 # Nueva colección añadida
+    output: true                                        # Activa la generación de páginas HTML
+    permalink: /ctfs/:name                              # Define la estructura del enlace
 
 
 ### Disqus ###
@@ -77,7 +80,7 @@ analytics:
 # See https://www.buymeacoffee.com/
 buymeacoffee:
   enabled: false
-  username: your_username
+  username: daffi1238
   color: "#007bff"
   message: "Thank you for visiting."                    # Message to be displayed aside from the button for a few seconds.
   description: "Support me on Buy me a coffee!"
@@ -95,11 +98,21 @@ defaults:
       type: "elements"                                  # For Documentation Only
     values:                                             # For Documentation Only
       layout: "element"                                 # For Documentation Only
+  - scope:                                              # Para elementos de la colección "elements"
+      path: "" 
+      type: "elements"
+    values:
+      layout: "ctfs"                                    # Esto puede cambiarse si necesitas otro layout
   - scope:
       path: ""
       type: "posts"
     values:
       comments: false                                   # Set to true to enable disqus comments
+  - scope:                                              # Configuración para la nueva colección "ctfs"
+      path: ""
+      type: "ctfs"
+    values:
+      layout: "ctf"                                     # Layout específico para "ctfs"
 
 
 ### Exclude from processing ###
