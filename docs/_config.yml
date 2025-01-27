@@ -9,11 +9,11 @@ repository          : yousinix/portfolYOU      # Change to <your-username>/<your
 remote_theme        : yousinix/portfolYOU
 open_new_tab        : false                    # Opens external URLs in new tab (works for posts, projects and navbar only)
 
+source: docs
 
 ### Plugins ###
 plugins:
   - jemoji
-
 
 ### Navbar Settings ###
 nav_exclude:                                            # The following paths are excluded from navbar
@@ -21,7 +21,6 @@ nav_exclude:                                            # The following paths ar
   - pages/404.html
   - pages/index.md
   - documentation/partials/**                           # For Documentation Only
-
 
 ### Author Info ###
 author:
@@ -47,10 +46,8 @@ author:
 # youtube           : your_channel_name
 # keybase           : daffi1238
 
-
 ### Posts ###
 permalink: /blog/:title
-
 
 ### Collections ###
 collections:
@@ -63,18 +60,15 @@ collections:
     output: true                                        # Activa la generación de páginas HTML
     permalink: /ctfs/:name                              # Define la estructura del enlace
 
-
 ### Disqus ###
 disqus:
   shortname: your-short-name-disqus                     # Your website Shortname on disqus
-
 
 ### Analytics ###
 analytics:
   enabled: false                                        # Set true to enable analytics
   google:
     tracking_id: your-google-tracking-id
-
 
 ### Buy me a coffee ###
 # See https://www.buymeacoffee.com/
@@ -84,7 +78,6 @@ buymeacoffee:
   color: "#007bff"
   message: "Thank you for visiting."                    # Message to be displayed aside from the button for a few seconds.
   description: "Support me on Buy me a coffee!"
-
 
 ### Defaults for collections ###
 defaults:
@@ -98,22 +91,18 @@ defaults:
       type: "elements"                                  # For Documentation Only
     values:                                             # For Documentation Only
       layout: "element"                                 # For Documentation Only
-  - scope:                                              # Para elementos de la colección "elements"
-      path: "" 
-      type: "elements"
-    values:
-      layout: "ctfs"                                    # Esto puede cambiarse si necesitas otro layout
   - scope:
       path: ""
       type: "posts"
     values:
+      layout: "post"
       comments: false                                   # Set to true to enable disqus comments
   - scope:                                              # Configuración para la nueva colección "ctfs"
       path: ""
       type: "ctfs"
     values:
       layout: "ctf"                                     # Layout específico para "ctfs"
-
+      comments: true                                    # Permitir comentarios para CTFs si lo necesitas
 
 ### Exclude from processing ###
 exclude:
