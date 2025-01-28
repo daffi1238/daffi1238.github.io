@@ -4,14 +4,12 @@
 
 layout:
   post: Post
-  category: Category
   tag: Tag
 
 # The tabs of sidebar
 tabs:
   # format: <filename_without_extension>: <value>
   home: Home
-  categories: Categories
   tags: Tags
   archives: Archives
   about: About
@@ -40,10 +38,10 @@ copyright:
     Except where otherwise noted, the blog posts on this site are licensed
     under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
 
-meta: Using the :THEME theme for :PLATFORM.
+meta: Powered by :PLATFORM with :THEME theme.
 
 not_found:
-  statement: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
+  statment: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
 
 notification:
   update_found: A new version of content is available.
@@ -70,22 +68,14 @@ post:
     share_link:
       title: Copy link
       succeed: Link copied successfully!
-
-# Date time format.
-# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
-df:
-  post:
-    strftime: "%b %e, %Y"
-    dayjs: "ll"
-  archives:
-    strftime: "%b"
-    dayjs: "MMM"
+  # pinned prompt of posts list on homepage
+  pin_prompt: Pinned
 
 # categories page
-categories:
-  category_measure:
-    singular: category
-    plural: categories
-  post_measure:
-    singular: post
-    plural: posts
+# categories:
+#   category_measure:
+#     singular: category
+#     plural: categories
+#   post_measure:
+#     singular: post
+#     plural: posts
