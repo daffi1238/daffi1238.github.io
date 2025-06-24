@@ -39,47 +39,11 @@
 </head>
 <body>
   <div class="terminal" id="terminal">
-    <div id="boot-text"></div>
-    <div class="prompt hidden" id="prompt">
-      <span>$</span><input id="input" autofocus />
-    </div>
+    <!-- Boot and dynamic content here -->
   </div>
 
   <script>
     const terminal = document.getElementById('terminal');
-    const bootText = document.getElementById('boot-text');
-    const prompt = document.getElementById('prompt');
-    const input = document.getElementById('input');
-
-    const introLines = [
-      "Initializing interactive resume assistant...",
-      "Loading modules: profile.js, experience.json, skills.ai",
-      "Welcome to cv.sh",
-      "Type 'help' to see available commands.",
-    ];
-
-    function typeLine(line, delay = 50) {
-      return new Promise((resolve) => {
-        let i = 0;
-        const interval = setInterval(() => {
-          bootText.textContent += line[i++];
-          if (i >= line.length) {
-            clearInterval(interval);
-            bootText.innerHTML += "<br>";
-            resolve();
-          }
-        }, delay);
-      });
-    }
-
-    async function bootSequence() {
-      for (const line of introLines) {
-        await typeLine(line);
-        await new Promise(r => setTimeout(r, 400));
-      }
-      prompt.classList.remove('hidden');
-      input.focus();
-    }
 
     const commands = {
       help: () =>
@@ -92,37 +56,87 @@
         "🛠️ Skills:\n- JavaScript, HTML, CSS\n- React, Node.js, Git",
       clear: () => {
         terminal.innerHTML = '';
-        terminal.appendChild(bootText);
-        bootText.innerHTML = '';
-        prompt.classList.add('hidden');
-        bootSequence();
+        startBootSequence();
         return '';
       },
     };
 
-    input.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') {
-        const cmd = input.value.trim();
-        const output = document.createElement('div');
-        output.textContent = `$ ${cmd}`;
-        terminal.insertBefore(output, prompt);
+    function printLine(text = "") {
+      const line = document.createElement('div');
+      line.textContent = text;
+      terminal.appendChild(line);
+      terminal.scrollTop = terminal.scrollHeight;
+      return line;
+    }
 
-        const result = commands[cmd]
-          ? commands[cmd]()
-          : `'${cmd}' is not a recognized command. Type 'help' for a list of valid commands.`;
+    function wait(ms) {
+      return new Promise(res => setTimeout(res, ms));
+    }
 
-        if (result) {
-          const response = document.createElement('div');
-          response.textContent = result;
-          terminal.insertBefore(response, prompt);
-        }
-
-        input.value = '';
-        terminal.scrollTop = terminal.scrollHeight;
+    async function typeText(text, speed = 40) {
+      const line = printLine();
+      for (let i = 0; i < text.length; i++) {
+        line.textContent += text[i];
+        await wait(speed);
       }
-    });
+      return line;
+    }
 
-    window.onload = bootSequence;
+    async function loadingBar(modules = ["profile.js", "experience.json", "skills.ai"]) {
+      for (const mod of modules) {
+        const line = printLine(`Loading module ${mod} [          ]`);
+        let bar = '';
+        for (let i = 0; i <= 10; i++) {
+          bar = '='.repeat(i) + ' '.repeat(10 - i);
+          line.textContent = `Loading module ${mod} [${bar}]`;
+          await wait(80);
+        }
+        line.textContent += " -> Done";
+        await wait(300);
+      }
+    }
+
+    function createPrompt() {
+      const prompt = document.createElement('div');
+      prompt.className = 'prompt';
+      prompt.innerHTML = `<span>$</span><input id="input" autofocus />`;
+      terminal.appendChild(prompt);
+      const input = prompt.querySelector('input');
+      input.focus();
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          const cmd = input.value.trim();
+          const out = printLine(`$ ${cmd}`);
+          const result = commands[cmd]
+            ? commands[cmd]()
+            : `'${cmd}' is not a recognized command. Type 'help' to see valid options.`;
+          if (result) {
+            printLine(result);
+          }
+          input.disabled = true;
+          createPrompt();
+        }
+      });
+    }
+
+    async function startBootSequence() {
+      printLine(); // spacer
+      await typeText("Initializing interactive resume assistant...");
+      await wait(300);
+      await loadingBar();
+      await wait(400);
+      await typeText("Welcome to cv.sh");
+      await wait(300);
+      await typeText("Typing 'help' automatically...");
+      await wait(500);
+      const helpOutput = commands['help']();
+      printLine(`$ help`);
+      printLine(helpOutput);
+      createPrompt();
+    }
+
+    window.onload = startBootSequence;
   </script>
 </body>
 </html>
