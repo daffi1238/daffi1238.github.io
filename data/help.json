@@ -2,6 +2,7 @@
   "title": "Available commands:",
   "commands": [
     "help",
+    "whoami",
     "education", 
     "experience",
     "skills",

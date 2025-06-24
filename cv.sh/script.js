@@ -15,7 +15,7 @@ class Terminal {
 
   async loadData() {
     try {
-      const dataFiles = ['help', 'education', 'experience', 'skills', 'contact', 'projects'];
+      const dataFiles = ['help', 'whoami', 'education', 'experience', 'skills', 'contact', 'projects'];
       for (const file of dataFiles) {
         const response = await fetch(`${this.baseUrl}/data/${file}.json`);
         this.data[file] = await response.json();
@@ -31,8 +31,22 @@ class Terminal {
     this.data = {
       help: {
         title: "Available commands:",
-        commands: ["help", "education", "experience", "skills", "contact", "projects", "clear"],
+        commands: ["help", "whoami", "education", "experience", "skills", "contact", "projects", "clear"],
         description: "Type any command above to get more information about that section."
+      },
+      whoami: {
+        title: "👤 User Information",
+        user: {
+          name: "Tu Nombre",
+          username: "daffi1238",
+          role: "Full Stack Developer & Security Specialist",
+          location: "Madrid, Spain",
+          age: "28",
+          status: "Available for new opportunities"
+        },
+        description: "Passionate developer with expertise in web development, cybersecurity, and DevOps.",
+        interests: ["Web Development", "Cybersecurity", "Open Source", "Machine Learning", "DevOps"],
+        languages: ["Spanish (Native)", "English (Fluent)", "Portuguese (Intermediate)"]
       },
       education: {
         title: "📘 Education",
@@ -179,6 +193,7 @@ class Terminal {
   getCommandResult(cmd) {
     const commands = {
       help: () => this.formatHelp(),
+      whoami: () => this.formatWhoami(),
       education: () => this.formatEducation(),
       experience: () => this.formatExperience(),
       skills: () => this.formatSkills(),
@@ -203,6 +218,27 @@ class Terminal {
       output += `  ${cmd}\n`;
     });
     output += `\n${data.description}`;
+    return output;
+  }
+
+  formatWhoami() {
+    const data = this.data.whoami;
+    let output = `${data.title}\n`;
+    output += `\nName: ${data.user.name}\n`;
+    output += `Username: ${data.user.username}\n`;
+    output += `Role: ${data.user.role}\n`;
+    output += `Location: ${data.user.location}\n`;
+    output += `Age: ${data.user.age}\n`;
+    output += `Status: ${data.user.status}\n`;
+    output += `\nDescription:\n  ${data.description}\n`;
+    output += `\nInterests:\n`;
+    data.interests.forEach(interest => {
+      output += `  • ${interest}\n`;
+    });
+    output += `\nLanguages:\n`;
+    data.languages.forEach(language => {
+      output += `  • ${language}\n`;
+    });
     return output;
   }
 

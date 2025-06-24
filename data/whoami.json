@@ -1,0 +1,25 @@
+{
+  "title": "👤 User Information",
+  "user": {
+    "name": "Tu Nombre",
+    "username": "daffi1238",
+    "role": "Full Stack Developer & Security Specialist",
+    "location": "Madrid, Spain",
+    "age": "28",
+    "status": "Available for new opportunities"
+  },
+  "description": "Passionate developer with expertise in web development, cybersecurity, and DevOps. Always eager to learn new technologies and solve complex problems.",
+  "interests": [
+    "Web Development",
+    "Cybersecurity",
+    "Open Source",
+    "Machine Learning",
+    "DevOps",
+    "Penetration Testing"
+  ],
+  "languages": [
+    "Spanish (Native)",
+    "English (Fluent)",
+    "Portuguese (Intermediate)"
+  ]
+} 
