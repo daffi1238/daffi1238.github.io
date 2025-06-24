@@ -1,0 +1,30 @@
+{
+  "title": "📧 Contact Information",
+  "items": [
+    {
+      "type": "Email",
+      "value": "tu@email.com",
+      "link": "mailto:tu@email.com"
+    },
+    {
+      "type": "Phone",
+      "value": "+34 600 000 000",
+      "link": "tel:+34600000000"
+    },
+    {
+      "type": "GitHub",
+      "value": "github.com/tuusuario",
+      "link": "https://github.com/tuusuario"
+    },
+    {
+      "type": "LinkedIn",
+      "value": "linkedin.com/in/tuusuario",
+      "link": "https://linkedin.com/in/tuusuario"
+    },
+    {
+      "type": "HackerRank",
+      "value": "hackerrank.com/tuusuario",
+      "link": "https://hackerrank.com/tuusuario"
+    }
+  ]
+} 

@@ -1,0 +1,23 @@
+{
+  "title": "💼 Experience",
+  "items": [
+    {
+      "position": "Senior Frontend Developer",
+      "company": "TechCorp",
+      "period": "2021–2024",
+      "description": "Led development of React-based applications, mentored junior developers, and implemented CI/CD pipelines."
+    },
+    {
+      "position": "Freelance Web Developer",
+      "company": "Self-employed",
+      "period": "2019–2021",
+      "description": "Developed custom websites and web applications for various clients using modern technologies."
+    },
+    {
+      "position": "Security Analyst Intern",
+      "company": "CyberSec Solutions",
+      "period": "2020–2021",
+      "description": "Performed vulnerability assessments and penetration testing for client systems."
+    }
+  ]
+} 

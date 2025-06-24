@@ -1,0 +1,13 @@
+{
+  "title": "Available commands:",
+  "commands": [
+    "help",
+    "education", 
+    "experience",
+    "skills",
+    "contact",
+    "projects",
+    "clear"
+  ],
+  "description": "Type any command above to get more information about that section."
+} 

@@ -1,0 +1,23 @@
+{
+  "title": "🚀 Projects",
+  "items": [
+    {
+      "name": "E-commerce Platform",
+      "description": "Full-stack e-commerce solution with React frontend and Node.js backend",
+      "technologies": ["React", "Node.js", "MongoDB", "Stripe"],
+      "link": "https://github.com/tuusuario/ecommerce-platform"
+    },
+    {
+      "name": "Security Scanner Tool",
+      "description": "Automated vulnerability scanner for web applications",
+      "technologies": ["Python", "Django", "Docker", "PostgreSQL"],
+      "link": "https://github.com/tuusuario/security-scanner"
+    },
+    {
+      "name": "Portfolio Website",
+      "description": "Personal portfolio built with modern web technologies",
+      "technologies": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
+      "link": "https://github.com/tuusuario/portfolio"
+    }
+  ]
+} 

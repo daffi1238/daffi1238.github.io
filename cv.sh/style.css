@@ -1,0 +1,188 @@
+body {
+  background: #1e1e1e;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  padding: 1rem;
+  overflow-x: hidden;
+}
+
+.terminal {
+  max-width: 800px;
+  margin: auto;
+  height: 90vh;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  border: 1px solid #00ff00;
+  border-radius: 5px;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+}
+
+.prompt {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.prompt span {
+  margin-right: 0.5rem;
+  color: #00ff00;
+  font-weight: bold;
+}
+
+input {
+  background: none;
+  border: none;
+  color: #00ff00;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  flex: 1;
+  caret-color: #00ff00;
+}
+
+input:focus {
+  outline: none;
+}
+
+.hidden { 
+  display: none; 
+}
+
+/* Animaciones */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+/* Estilos para el output de comandos */
+.command-output {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-left: 2px solid #00ff00;
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.error {
+  color: #ff4444;
+}
+
+.success {
+  color: #44ff44;
+}
+
+.warning {
+  color: #ffaa00;
+}
+
+/* Loading bar styles */
+.loading-bar {
+  display: inline-block;
+  width: 200px;
+  height: 20px;
+  background: #333;
+  border: 1px solid #00ff00;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.loading-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #00ff00, #44ff44);
+  transition: width 0.1s ease;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .terminal {
+    max-width: 95%;
+    height: 85vh;
+    font-size: 0.9rem;
+  }
+  
+  body {
+    padding: 0.5rem;
+  }
+}
+
+/* Scrollbar styling */
+.terminal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+.terminal::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  border-radius: 4px;
+}
+
+.terminal::-webkit-scrollbar-thumb:hover {
+  background: #44ff44;
+}
+
+/* Typing animation */
+.typing {
+  border-right: 2px solid #00ff00;
+  animation: blink 1s infinite;
+}
+
+/* Command history styling */
+.command-history {
+  color: #888;
+  font-style: italic;
+}
+
+/* Link styling */
+a {
+  color: #00aaff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #44ccff;
+}
+
+/* Skill tags */
+.skill-tag {
+  display: inline-block;
+  background: rgba(0, 255, 0, 0.2);
+  border: 1px solid #00ff00;
+  padding: 0.2rem 0.5rem;
+  margin: 0.2rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+}
+
+/* Project cards */
+.project-card {
+  border: 1px solid #00ff00;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  background: rgba(0, 255, 0, 0.05);
+}
+
+.project-title {
+  color: #00aaff;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.project-description {
+  margin: 0.5rem 0;
+}
+
+.project-tech {
+  font-size: 0.9rem;
+  color: #888;
+} 

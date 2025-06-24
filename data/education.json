@@ -1,0 +1,17 @@
+{
+  "title": "📘 Education",
+  "items": [
+    {
+      "degree": "B.Sc. in Computer Science",
+      "institution": "XYZ University",
+      "period": "2016–2020",
+      "description": "Specialized in Software Engineering and Web Development"
+    },
+    {
+      "degree": "Master's in Cybersecurity",
+      "institution": "Tech Institute",
+      "period": "2020–2022",
+      "description": "Focused on Network Security and Ethical Hacking"
+    }
+  ]
+} 

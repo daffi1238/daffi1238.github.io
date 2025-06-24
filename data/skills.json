@@ -1,0 +1,21 @@
+{
+  "title": "🛠️ Skills",
+  "categories": [
+    {
+      "name": "Frontend",
+      "skills": ["JavaScript", "HTML5", "CSS3", "React", "Vue.js", "TypeScript"]
+    },
+    {
+      "name": "Backend",
+      "skills": ["Node.js", "Python", "Java", "PostgreSQL", "MongoDB", "Express.js"]
+    },
+    {
+      "name": "DevOps",
+      "skills": ["Docker", "Kubernetes", "AWS", "Git", "Jenkins", "Terraform"]
+    },
+    {
+      "name": "Security",
+      "skills": ["Penetration Testing", "OWASP", "Burp Suite", "Metasploit", "Wireshark", "Nmap"]
+    }
+  ]
+} 
