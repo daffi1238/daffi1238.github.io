@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV.sh - Mi Currículum</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .cv-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .experience-item, .education-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            background: #f8f9fa;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .experience-item h3, .education-item h3 {
+            margin: 0 0 5px 0;
+            color: #2c3e50;
+        }
+        
+        .experience-item .period, .education-item .period {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-tag {
+            background: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        
+        .contact-info {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Animaciones */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container fade-in">
+        <div class="header">
+            <h1>Tu Nombre</h1>
+            <div class="subtitle">Desarrollador Full Stack | DevOps Engineer</div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>Experiencia Profesional</h2>
+                <div class="experience-item">
+                    <h3>Desarrollador Senior</h3>
+                    <div class="period">2020 - Presente</div>
+                    <p>Desarrollo de aplicaciones web y móviles usando tecnologías modernas como React, Node.js y Python.</p>
+                </div>
+                <div class="experience-item">
+                    <h3>DevOps Engineer</h3>
+                    <div class="period">2018 - 2020</div>
+                    <p>Implementación de pipelines CI/CD, gestión de infraestructura cloud y automatización de procesos.</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Educación</h2>
+                <div class="education-item">
+                    <h3>Ingeniería Informática</h3>
+                    <div class="period">2014 - 2018</div>
+                    <p>Universidad de Ejemplo</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Habilidades Técnicas</h2>
+                <div class="skills">
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Kubernetes</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Git</span>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Proyectos Destacados</h2>
+                <div class="experience-item">
+                    <h3>Plataforma E-commerce</h3>
+                    <p>Desarrollo completo de una plataforma de comercio electrónico con más de 10,000 usuarios activos.</p>
+                </div>
+                <div class="experience-item">
+                    <h3>Sistema de Monitoreo</h3>
+                    <p>Implementación de un sistema de monitoreo y alertas para infraestructura crítica.</p>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <h3>Información de Contacto</h3>
+                <p>📧 <a href="mailto:tu@email.com">tu@email.com</a></p>
+                <p>📱 <a href="tel:+34600000000">+34 600 000 000</a></p>
+                <p>🌐 <a href="https://github.com/tuusuario" target="_blank">GitHub</a></p>
+                <p>💼 <a href="https://linkedin.com/in/tuusuario" target="_blank">LinkedIn</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript para funcionalidades adicionales
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animación de aparición progresiva
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                section.style.animationDelay = `${index * 0.2}s`;
+                section.classList.add('fade-in');
+            });
+            
+            // Efecto hover en las habilidades
+            const skillTags = document.querySelectorAll('.skill-tag');
+            skillTags.forEach(tag => {
+                tag.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1)';
+                    this.style.transition = 'transform 0.2s ease';
+                });
+                
+                tag.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+            
+            // Función para actualizar la fecha dinámicamente
+            function updateDate() {
+                const now = new Date();
+                const dateString = now.toLocaleDateString('es-ES', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                // Puedes añadir un elemento para mostrar la fecha de actualización
+                console.log(`CV actualizado el: ${dateString}`);
+            }
+            
+            updateDate();
+            
+            // Función para descargar CV como PDF (requiere librería adicional)
+            function downloadAsPDF() {
+                // Aquí podrías integrar una librería como jsPDF
+                alert('Función de descarga en desarrollo');
+            }
+            
+            // Añadir botón de descarga si lo deseas
+            const downloadBtn = document.createElement('button');
+            downloadBtn.textContent = '📄 Descargar PDF';
+            downloadBtn.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: #3498db;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 25px;
+                cursor: pointer;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                z-index: 1000;
+            `;
+            downloadBtn.addEventListener('click', downloadAsPDF);
+            document.body.appendChild(downloadBtn);
+        });
+    </script>
+</body>
+</html> 
