@@ -1,0 +1,399 @@
+---
+layout: page
+---
+
+{% raw %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV.sh - {{ page.title | default: site.title }}</title>
+    
+    <!-- Incluir estilos del tema Chirpy -->
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    
+    <style>
+        /* Estilos personalizados para CV */
+        .cv-page {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .cv-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .cv-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .cv-header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .cv-header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        
+        .cv-content {
+            padding: 40px;
+        }
+        
+        .cv-section {
+            margin-bottom: 30px;
+        }
+        
+        .cv-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .cv-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            background: #f8f9fa;
+            border-radius: 0 5px 5px 0;
+            transition: transform 0.2s ease;
+        }
+        
+        .cv-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .cv-item h3 {
+            margin: 0 0 5px 0;
+            color: #2c3e50;
+        }
+        
+        .cv-item .period {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .skill-category {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .skill-category h3 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        
+        .skill-tag {
+            background: #3498db;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            transition: all 0.2s ease;
+        }
+        
+        .skill-tag:hover {
+            background: #2980b9;
+            transform: scale(1.05);
+        }
+        
+        .contact-section {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .contact-section a {
+            color: #3498db;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+            padding: 5px 0;
+        }
+        
+        .contact-section a:hover {
+            text-decoration: underline;
+        }
+        
+        .download-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.2s ease;
+        }
+        
+        .download-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        /* Animaciones */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cv-header {
+                padding: 20px;
+            }
+            
+            .cv-header h1 {
+                font-size: 2em;
+            }
+            
+            .cv-content {
+                padding: 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-page">
+        <div class="cv-container fade-in">
+            <div class="cv-header">
+                <h1>Tu Nombre</h1>
+                <div class="subtitle">Desarrollador Full Stack | DevOps Engineer | Security Specialist</div>
+            </div>
+            
+            <div class="cv-content">
+                <div class="cv-section">
+                    <h2>Experiencia Profesional</h2>
+                    <div class="cv-item">
+                        <h3>Senior Full Stack Developer</h3>
+                        <div class="period">2022 - Presente</div>
+                        <p>Desarrollo de aplicaciones web escalables usando React, Node.js, Python y tecnologías cloud. Liderazgo técnico en proyectos críticos.</p>
+                    </div>
+                    <div class="cv-item">
+                        <h3>DevOps Engineer</h3>
+                        <div class="period">2020 - 2022</div>
+                        <p>Implementación de pipelines CI/CD, gestión de infraestructura cloud (AWS/GCP), automatización y monitoreo de sistemas.</p>
+                    </div>
+                    <div class="cv-item">
+                        <h3>Security Analyst</h3>
+                        <div class="period">2018 - 2020</div>
+                        <p>Análisis de vulnerabilidades, pentesting, implementación de medidas de seguridad y compliance.</p>
+                    </div>
+                </div>
+                
+                <div class="cv-section">
+                    <h2>Educación</h2>
+                    <div class="cv-item">
+                        <h3>Máster en Ciberseguridad</h3>
+                        <div class="period">2019 - 2020</div>
+                        <p>Universidad Politécnica de Madrid</p>
+                    </div>
+                    <div class="cv-item">
+                        <h3>Ingeniería Informática</h3>
+                        <div class="period">2014 - 2018</div>
+                        <p>Universidad de Ejemplo</p>
+                    </div>
+                </div>
+                
+                <div class="cv-section">
+                    <h2>Habilidades Técnicas</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3>Frontend</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Vue.js</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">TypeScript</span>
+                                <span class="skill-tag">HTML5</span>
+                                <span class="skill-tag">CSS3</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Backend</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Java</span>
+                                <span class="skill-tag">Go</span>
+                                <span class="skill-tag">PostgreSQL</span>
+                                <span class="skill-tag">MongoDB</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>DevOps</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Docker</span>
+                                <span class="skill-tag">Kubernetes</span>
+                                <span class="skill-tag">AWS</span>
+                                <span class="skill-tag">Terraform</span>
+                                <span class="skill-tag">Jenkins</span>
+                                <span class="skill-tag">Git</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Security</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Penetration Testing</span>
+                                <span class="skill-tag">OWASP</span>
+                                <span class="skill-tag">Burp Suite</span>
+                                <span class="skill-tag">Metasploit</span>
+                                <span class="skill-tag">Wireshark</span>
+                                <span class="skill-tag">Nmap</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cv-section">
+                    <h2>Proyectos Destacados</h2>
+                    <div class="cv-item">
+                        <h3>Plataforma E-commerce Segura</h3>
+                        <p>Desarrollo completo de una plataforma de comercio electrónico con más de 50,000 usuarios activos. Implementación de medidas de seguridad avanzadas y cumplimiento PCI DSS.</p>
+                    </div>
+                    <div class="cv-item">
+                        <h3>Sistema de Monitoreo de Seguridad</h3>
+                        <p>Desarrollo de un sistema de detección de intrusiones (IDS) usando machine learning para identificar amenazas en tiempo real.</p>
+                    </div>
+                    <div class="cv-item">
+                        <h3>Herramienta de Análisis de Vulnerabilidades</h3>
+                        <p>Creación de una herramienta automatizada para escaneo de vulnerabilidades en aplicaciones web y APIs.</p>
+                    </div>
+                </div>
+                
+                <div class="contact-section">
+                    <h3>Información de Contacto</h3>
+                    <p>📧 <a href="mailto:tu@email.com">tu@email.com</a></p>
+                    <p>📱 <a href="tel:+34600000000">+34 600 000 000</a></p>
+                    <p>🌐 <a href="https://github.com/tuusuario" target="_blank">GitHub</a></p>
+                    <p>💼 <a href="https://linkedin.com/in/tuusuario" target="_blank">LinkedIn</a></p>
+                    <p>🔒 <a href="https://hackerrank.com/tuusuario" target="_blank">HackerRank</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="download-btn" onclick="downloadCV()">📄 Descargar PDF</button>
+    </div>
+
+    <script>
+        // JavaScript para funcionalidades interactivas
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animación de aparición progresiva
+            const sections = document.querySelectorAll('.cv-section');
+            sections.forEach((section, index) => {
+                section.style.animationDelay = `${index * 0.2}s`;
+                section.classList.add('fade-in');
+            });
+            
+            // Efecto hover en las habilidades
+            const skillTags = document.querySelectorAll('.skill-tag');
+            skillTags.forEach(tag => {
+                tag.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1)';
+                });
+                
+                tag.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+            
+            // Contador de visitas (ejemplo)
+            let visitCount = localStorage.getItem('cvVisits') || 0;
+            visitCount = parseInt(visitCount) + 1;
+            localStorage.setItem('cvVisits', visitCount);
+            console.log(`Visitas al CV: ${visitCount}`);
+            
+            // Función para mostrar fecha de actualización
+            function showLastUpdate() {
+                const lastUpdate = new Date().toLocaleDateString('es-ES', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                console.log(`CV actualizado el: ${lastUpdate}`);
+            }
+            
+            showLastUpdate();
+        });
+        
+        // Función para descargar CV como PDF
+        function downloadCV() {
+            // Aquí podrías integrar una librería como jsPDF o html2pdf
+            // Por ahora, mostraremos un mensaje
+            alert('Función de descarga en desarrollo. Próximamente disponible.');
+            
+            // Alternativa: abrir en nueva ventana para imprimir
+            // window.open('/cv.html', '_blank');
+        }
+        
+        // Función para copiar información de contacto
+        function copyContactInfo(type) {
+            let text = '';
+            switch(type) {
+                case 'email':
+                    text = 'tu@email.com';
+                    break;
+                case 'phone':
+                    text = '+34 600 000 000';
+                    break;
+            }
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert(`${type === 'email' ? 'Email' : 'Teléfono'} copiado al portapapeles`);
+            });
+        }
+        
+        // Función para modo oscuro (opcional)
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
+{% endraw %} 

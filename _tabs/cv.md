@@ -1,17 +1,8 @@
 ---
-# the default layout is 'page'
+layout: cv
 icon: fas fa-terminal
 order: 5
 ---
-
-<script>
-    // Redirigir automáticamente al archivo HTML personalizado
-    window.location.href = '/cv.html';
-</script>
-
-<noscript>
-    <p>Si no eres redirigido automáticamente, <a href="/cv.html">haz clic aquí</a> para ver mi CV.</p>
-</noscript>
 
 # CV.sh
 
