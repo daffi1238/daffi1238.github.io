@@ -2,6 +2,7 @@
 layout: cv
 icon: fas fa-terminal
 order: 5
+title: CV.sh
 ---
 
 # CV.sh
