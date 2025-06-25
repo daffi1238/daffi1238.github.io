@@ -47,13 +47,19 @@
 
     const commands = {
       help: () =>
-        "Available commands:\nhelp\neducation\nexperience\nskills\nclear",
+        "Available commands:\nhelp\nwhoami\neducation\nexperience\nskills\ncontact\nprojects\nclear",
+      whoami: () =>
+        "👤 User Information:\n\nName: Tu Nombre\nUsername: daffi1238\nRole: Full Stack Developer & Security Specialist\nLocation: Madrid, Spain\nAge: 28\nStatus: Available for new opportunities\n\nDescription:\n  Passionate developer with expertise in web development, cybersecurity, and DevOps. Always eager to learn new technologies and solve complex problems.\n\nInterests:\n  • Web Development\n  • Cybersecurity\n  • Open Source\n  • Machine Learning\n  • DevOps\n  • Penetration Testing\n\nLanguages:\n  • Spanish (Native)\n  • English (Fluent)\n  • Portuguese (Intermediate)",
       education: () =>
         "📘 Education:\n- B.Sc. in Computer Science - XYZ University (2016–2020)",
       experience: () =>
         "💼 Experience:\n- Frontend Developer at TechCorp (2021–2024)\n- Freelance Web Developer (2019–2021)",
       skills: () =>
         "🛠️ Skills:\n- JavaScript, HTML, CSS\n- React, Node.js, Git",
+      contact: () =>
+        "📧 Contact Information:\n\nEmail:\n  tu@email.com\n  Link: mailto:tu@email.com\n\nPhone:\n  +34 600 000 000\n  Link: tel:+34600000000\n\nGitHub:\n  github.com/tuusuario\n  Link: https://github.com/tuusuario\n\nLinkedIn:\n  linkedin.com/in/tuusuario\n  Link: https://linkedin.com/in/tuusuario\n\nHackerRank:\n  hackerrank.com/tuusuario\n  Link: https://hackerrank.com/tuusuario",
+      projects: () =>
+        "🚀 Projects:\n\nE-commerce Platform\n  Description: Full-stack e-commerce solution with React frontend and Node.js backend\n  Technologies: React, Node.js, MongoDB, Stripe\n  Link: https://github.com/tuusuario/ecommerce-platform\n\nSecurity Scanner Tool\n  Description: Automated vulnerability scanner for web applications\n  Technologies: Python, Django, Docker, PostgreSQL\n  Link: https://github.com/tuusuario/security-scanner\n\nPortfolio Website\n  Description: Personal portfolio built with modern web technologies\n  Technologies: HTML5, CSS3, JavaScript, GitHub Pages\n  Link: https://github.com/tuusuario/portfolio",
       clear: () => {
         terminal.innerHTML = '';
         startBootSequence();
@@ -139,4 +145,4 @@
     window.onload = startBootSequence;
   </script>
 </body>
-</html>
+</html> 

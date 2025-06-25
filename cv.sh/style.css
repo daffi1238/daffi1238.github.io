@@ -1,10 +1,9 @@
 body {
   background: #1e1e1e;
   color: #00ff00;
-  font-family: 'Courier New', monospace;
+  font-family: monospace;
   margin: 0;
   padding: 1rem;
-  overflow-x: hidden;
 }
 
 .terminal {
@@ -13,23 +12,14 @@ body {
   height: 90vh;
   overflow-y: auto;
   white-space: pre-wrap;
-  border: 1px solid #00ff00;
-  border-radius: 5px;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.8);
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
 }
 
 .prompt {
   display: flex;
-  align-items: center;
-  margin: 0.5rem 0;
 }
 
 .prompt span {
   margin-right: 0.5rem;
-  color: #00ff00;
-  font-weight: bold;
 }
 
 input {
@@ -40,11 +30,6 @@ input {
   font-size: 1rem;
   outline: none;
   flex: 1;
-  caret-color: #00ff00;
-}
-
-input:focus {
-  outline: none;
 }
 
 .hidden { 
