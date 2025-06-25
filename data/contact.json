@@ -3,28 +3,23 @@
   "items": [
     {
       "type": "Email",
-      "value": "tu@email.com",
-      "link": "mailto:tu@email.com"
+      "value": "classified@protonmail.com",
+      "link": "mailto:classified@protonmail.com"
     },
     {
       "type": "Phone",
-      "value": "+34 600 000 000",
-      "link": "tel:+34600000000"
+      "value": "+XX XXX XXX XXX",
+      "link": "tel:000000000"
     },
     {
       "type": "GitHub",
-      "value": "github.com/tuusuario",
-      "link": "https://github.com/tuusuario"
+      "value": "https://github.com/daffi1238",
+      "link": "https://github.com/daffi1238"
     },
     {
       "type": "LinkedIn",
-      "value": "linkedin.com/in/tuusuario",
-      "link": "https://linkedin.com/in/tuusuario"
-    },
-    {
-      "type": "HackerRank",
-      "value": "hackerrank.com/tuusuario",
-      "link": "https://hackerrank.com/tuusuario"
+      "value": "https://www.linkedin.com/in/jes%C3%BAs-%C3%A1vila-sumariva-ab1b43176/",
+      "link": "https://www.linkedin.com/in/jes%C3%BAs-%C3%A1vila-sumariva-ab1b43176/"
     }
   ]
-} 
+}

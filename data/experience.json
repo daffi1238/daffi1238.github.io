@@ -2,22 +2,34 @@
   "title": "💼 Experience",
   "items": [
     {
-      "position": "Senior Frontend Developer",
-      "company": "TechCorp",
-      "period": "2021–2024",
-      "description": "Led development of React-based applications, mentored junior developers, and implemented CI/CD pipelines."
+      "position": "Team Lead - Internal Pentesting",
+      "company": "Deloitte",
+      "period": "Feb 2023 – Jul 2024",
+      "description": "Led an internal pentesting teamsecuring global infrastructure. Developed automated tools in Python and Bash, responded to CVEs and zero-day threats, and coordinated rapid incident handling. Ensured security readiness while mentoring junior pentesters across international projects."
     },
     {
-      "position": "Freelance Web Developer",
-      "company": "Self-employed",
-      "period": "2019–2021",
-      "description": "Developed custom websites and web applications for various clients using modern technologies."
+      "position": "Penetration Tester",
+      "company": "Deloitte",
+      "period": "Aug 2022 – Present",
+      "description": "Performed full-scope pentests: web apps (XSS, auth bypass), APIs, mobile, Wi-Fi, and network infrastructure (internal/external). Delivered strategic findings to international clients (USA & LATAM). Adept in Burp Suite, Nmap, Kali, and Python-based tooling."
     },
     {
-      "position": "Security Analyst Intern",
-      "company": "CyberSec Solutions",
-      "period": "2020–2021",
-      "description": "Performed vulnerability assessments and penetration testing for client systems."
+      "position": "Network Engineer",
+      "company": "Schneider Electric",
+      "period": "Nov 2021 – Aug 2022",
+      "description": "Designed and tested secure networks (segmentation, CCTV, visibility). Achieved CCNA. Participated in a national CTF competition, winning 2nd place with a 750€ prize. Contributed to factory test validations (FAT) for critical infrastructure."
+    },
+    {
+      "position": "IT Management Intern",
+      "company": "MERIDIANOS",
+      "period": "Jan 2021 – Jul 2021",
+      "description": "Assisted with infrastructure audits (RGPD, red team focus). Set up environments using Docker, managed Active Directory, and contributed to technical security operations. Hands-on with digital forensics and system hardening."
+    },
+    {
+      "position": "Research Student",
+      "company": "Universidad de Sevilla",
+      "period": "Sep 2020 – May 2021",
+      "description": "Collaborated on a cybersecurity research project focused on malicious traffic detection using machine learning and anomaly-based models."
     }
   ]
-} 
+}

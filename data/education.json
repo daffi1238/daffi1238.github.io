@@ -2,16 +2,16 @@
   "title": "📘 Education",
   "items": [
     {
-      "degree": "B.Sc. in Computer Science",
-      "institution": "XYZ University",
-      "period": "2016–2020",
-      "description": "Specialized in Software Engineering and Web Development"
+      "degree": "B.Sc. in Telecommunications Engineering",
+      "institution": "Universidad de Sevilla",
+      "period": "2016–2021",
+      "description": "Built a solid foundation in signal processing, networks, and how to break them (ethically, of course)."
     },
     {
-      "degree": "Master's in Cybersecurity",
-      "institution": "Tech Institute",
-      "period": "2020–2022",
-      "description": "Focused on Network Security and Ethical Hacking"
+      "degree": "Master's in Security and Privacy",
+      "institution": "Universitat Oberta de Catalunya (UOC)",
+      "period": "2021–2022",
+      "description": "Learned how to protect, attack, and disappear — all within academic and legal boundaries."
     }
   ]
-} 
+}
