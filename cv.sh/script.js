@@ -46,7 +46,8 @@ class Terminal {
         },
         description: "Passionate developer with expertise in web development, cybersecurity, and DevOps.",
         interests: ["Web Development", "Cybersecurity", "Open Source", "Machine Learning", "DevOps"],
-        languages: ["Spanish (Native)", "English (Fluent)", "Portuguese (Intermediate)"]
+        languages: ["Spanish (Native)", "English (Fluent)", "Portuguese (Intermediate)"],
+        ascii_art: "ASCII ART HERE"
       },
       education: {
         title: "📘 Education",
@@ -223,22 +224,35 @@ class Terminal {
 
   formatWhoami() {
     const data = this.data.whoami;
-    let output = `${data.title}\n`;
-    output += `\nName: ${data.user.name}\n`;
-    output += `Username: ${data.user.username}\n`;
-    output += `Role: ${data.user.role}\n`;
-    output += `Location: ${data.user.location}\n`;
-    output += `Age: ${data.user.age}\n`;
-    output += `Status: ${data.user.status}\n`;
-    output += `\nDescription:\n  ${data.description}\n`;
-    output += `\nInterests:\n`;
+    let output = `${data.ascii_art}\n\n`;
+    output += `[+] USERNAME: ${data.user.username}\n`;
+    output += `[+] NAME    : ${data.user.name}\n`;
+    output += `[+] ROLE    : ${data.user.role}\n`;
+    output += `[+] STATUS  : ${data.user.status}\n`;
+    output += `[+] LOCATION: ${data.user.location}\n`;
+    output += `[+] AGE     : ${data.user.age}\n\n`;
+
+    if (data.certifications) {
+      output += `[~] CERTIFICATIONS:\n`;
+      data.certifications.forEach(cert => {
+        output += `    - ${cert}\n`;
+      });
+      output += `\n`;
+    }
+
+    output += `[~] INTERESTS:\n`;
     data.interests.forEach(interest => {
-      output += `  • ${interest}\n`;
+      output += `    - ${interest}\n`;
     });
-    output += `\nLanguages:\n`;
+    output += `\n`;
+
+    output += `[~] LANGUAGES:\n`;
     data.languages.forEach(language => {
-      output += `  • ${language}\n`;
+      output += `    - ${language}\n`;
     });
+    output += `\n`;
+
+    output += `[~] ABOUT:\n    ${data.description}\n`;
     return output;
   }
 
