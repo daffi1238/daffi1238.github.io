@@ -36,18 +36,31 @@ class Terminal {
       },
       whoami: {
         title: "👤 User Information",
+        ascii_art: "          _                           _ \n__      _| |__   ___   __ _ _ __ ___ (_)\n\\ \\ /\\ / / '_ \\ / _ \\ / _` | '_ ` _ \\| |\n \\ V  V /| | | | (_) | (_| | | | | | | |\n  \\_/\\_/ |_| |_|\\___/ \\__,_|_| |_| |_|_|",
         user: {
-          name: "Tu Nombre",
+          name: "Jesus A. Sumariva",
           username: "daffi1238",
-          role: "Full Stack Developer & Security Specialist",
-          location: "Madrid, Spain",
-          age: "28",
+          role: "Ethical Hacker - Penetration Tester",
+          location: "Spain",
+          age: "31",
           status: "Available for new opportunities"
         },
-        description: "Passionate developer with expertise in web development, cybersecurity, and DevOps.",
-        interests: ["Web Development", "Cybersecurity", "Open Source", "Machine Learning", "DevOps"],
-        languages: ["Spanish (Native)", "English (Fluent)", "Portuguese (Intermediate)"],
-        ascii_art: "ASCII ART HERE"
+        description: "Cybersecurity enthusiast with a passion for dismantling and hardening systems. Specialized in ethical hacking, advanced web exploitation, and red team operations. Always learning, always scanning, always ready.",
+        interests: [
+          "🚨 Web App Hacking & Web Breakage",
+          "☁️ Cloud Pwnage & Security",
+          "🔓 Open Source Recon Tools",
+          "📱 Mobile Exploitation (iOS & Android)",
+          "🛠️ Dev tools & Custom Scripts",
+          "💣 Red Team Ops & Social Engineering",
+          "🎯 0-day & n-day vulnerability hunting"
+        ],
+        certifications: [
+          "💀 Offensive Security Certified Professional (OSCP)",
+          "🎯 Certified Red Team Operator (CRTO)",
+          "🚩 2nd place in Nuwe-CTF (Schneider Electric)"
+        ],
+        languages: ["Spanish (Native)", "English (Fluent)", "Portuguese (Intermediate)"]
       },
       education: {
         title: "📘 Education",
