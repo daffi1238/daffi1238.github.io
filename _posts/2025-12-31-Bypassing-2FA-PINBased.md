@@ -23,3 +23,12 @@ Many banking applications and secure systems implement a Two-Factor Authenticati
 3. System requests 2 random positions from the 6-digit PIN
 4. User enters only those 2 digits
 5. System validates and grants access
+
+
+## What I found?
+![login]({{ site.baseurl }}/assets/img/posts2025-12-30_002.png)
+
+![PIN panel]({{ site.baseurl }}/assets/img/posts2025-12-30_003.png)
+
+![PIN request]({{ site.baseurl }}/assets/img/posts2025-12-30_001.png)
+
