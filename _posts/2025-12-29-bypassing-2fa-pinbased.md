@@ -1,6 +1,6 @@
 ---
 title: Bypassing Partial PIN 2FA - Position-Based Authentication Weakness
-date: 2025-12-31 23:59:00 +0100
+date: 2025-12-29 23:59:00 +0100
 categories: [Web Security, Authentication]
 tags: [2fa, authentication, bypass, brute-force, owasp]
 author: daffi
