@@ -32,3 +32,6 @@ Many banking applications and secure systems implement a Two-Factor Authenticati
 
 ![PIN request]({{ site.baseurl }}/assets/img/posts/2025-12-30_001.png)
 
+In the POST request it's possible, in this case at least, modify the positions of the sended PIN, even sending twice the same position. With this configuration just was broken a PIN of 6 digits with only ten tries. Sometimes is even a surprise the things yuo can find in finances environment.
+
+Thank you for reading and have a happy hacking!
