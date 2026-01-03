@@ -4,9 +4,9 @@ date: 2025-12-29 23:59:00 +0100
 categories: [Web Security, Authentication]
 tags: [2fa, authentication, bypass, brute-force, owasp]
 author: daffi
-image:
-  path: /assets/img/posts/2fa-bypass.jpg
-  alt: 2FA PIN bypass illustration
+#image:
+#  path: /assets/img/posts/2fa-bypass.jpg
+#  alt: 2FA PIN bypass illustration
 pin: true
 ---
 
