@@ -30,5 +30,5 @@ Many banking applications and secure systems implement a Two-Factor Authenticati
 
 ![PIN panel]({{ site.baseurl }}/assets/img/posts/2025-12-30_003.png)
 
-![PIN request]({{ site.baseurl }}/assets/img/posts&2025-12-30_001.png)
+![PIN request]({{ site.baseurl }}/assets/img/posts/2025-12-30_001.png)
 
