@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jesús Ávila | Offensive Security Professional</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0a0e14;
+            --bg-secondary: #0d1117;
+            --bg-card: #161b22;
+            --accent-primary: #00ff9d;
+            --accent-secondary: #0affb8;
+            --accent-tertiary: #00d68f;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #484f58;
+            --border-color: #21262d;
+            --border-accent: rgba(0, 255, 157, 0.3);
+            --gradient-glow: linear-gradient(135deg, rgba(0, 255, 157, 0.1) 0%, rgba(10, 255, 184, 0.05) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Animated background grid */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 157, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 157, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 50px 40px;
+            background: var(--gradient-glow);
+            border: 1px solid var(--border-accent);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+        }
+
+        .name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .title::before {
+            content: '>';
+            color: var(--accent-primary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 255, 157, 0.15);
+        }
+
+        .contact-links a i {
+            font-size: 1.1rem;
+        }
+
+        /* Sections */
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            position: relative;
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+        .section:nth-child(4) { animation-delay: 0.3s; }
+        .section:nth-child(5) { animation-delay: 0.4s; }
+        .section:nth-child(6) { animation-delay: 0.5s; }
+
+        .section-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--accent-primary);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title::before {
+            content: '#';
+            opacity: 0.5;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border-accent), transparent);
+        }
+
+        /* Certifications */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .cert-badge {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .cert-badge:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-3px);
+        }
+
+        .cert-badge:hover .cert-verify {
+            opacity: 1;
+        }
+
+        .cert-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 5px;
+        }
+
+        .cert-full {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .cert-verify {
+            margin-top: 10px;
+            font-size: 0.7rem;
+            color: var(--accent-tertiary);
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .cert-verify i {
+            margin-right: 5px;
+        }
+
+        /* Experience */
+        .experience-item {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 35px;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-primary);
+        }
+
+        .company-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 3px;
+        }
+
+        .job-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-tertiary);
+            margin-bottom: 15px;
+        }
+
+        .job-role {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-secondary);
+            margin-bottom: 12px;
+            padding-left: 15px;
+            border-left: 3px solid var(--accent-primary);
+        }
+
+        .job-details {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .job-details li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .job-details li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .skill-category h4 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-secondary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        /* Education */
+        .edu-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .edu-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .edu-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+            min-width: 110px;
+        }
+
+        .edu-content h4 {
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .edu-content .institution {
+            font-size: 0.9rem;
+            color: var(--accent-secondary);
+            margin-bottom: 8px;
+        }
+
+        .edu-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .edu-content a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+
+        .edu-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Languages & Extras */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .lang-item:last-child {
+            border-bottom: none;
+        }
+
+        .lang-name {
+            font-weight: 500;
+        }
+
+        .lang-level {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .achievement {
+            background: var(--bg-secondary);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-primary);
+        }
+
+        .achievement i {
+            color: var(--accent-primary);
+            margin-right: 8px;
+        }
+
+        /* Print Button */
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 25px rgba(0, 255, 157, 0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 35px rgba(0, 255, 157, 0.4);
+        }
+
+        .print-tip {
+            position: fixed;
+            bottom: 90px;
+            right: 30px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            max-width: 280px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 99;
+        }
+
+        .print-tip i {
+            color: var(--accent-primary);
+            margin-right: 8px;
+        }
+
+        .print-btn:hover + .print-tip {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            /* Mantener tema oscuro */
+            :root {
+                --bg-primary: #0a0e14;
+                --bg-secondary: #0d1117;
+                --bg-card: #161b22;
+                --accent-primary: #00ff9d;
+                --accent-secondary: #0affb8;
+                --accent-tertiary: #00d68f;
+                --text-primary: #e6edf3;
+                --text-secondary: #8b949e;
+                --border-color: #21262d;
+                --border-accent: rgba(0, 255, 157, 0.3);
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: var(--bg-primary) !important;
+                font-size: 8pt;
+                line-height: 1.2;
+            }
+
+            .bg-grid, .print-btn, .print-tip {
+                display: none !important;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            /* Header ultra compacto */
+            .header {
+                background: var(--bg-card) !important;
+                border: 1px solid var(--border-accent);
+                padding: 10px 15px;
+                margin-bottom: 8px;
+                page-break-inside: avoid;
+            }
+
+            .header::before {
+                display: none;
+            }
+
+            .name {
+                font-size: 18pt;
+                color: var(--accent-primary) !important;
+                margin-bottom: 2px;
+            }
+
+            .title {
+                font-size: 9pt;
+                margin-bottom: 8px;
+            }
+
+            .contact-links {
+                gap: 6px;
+            }
+
+            .contact-links a {
+                background: var(--bg-secondary) !important;
+                border: 1px solid var(--border-color);
+                padding: 4px 8px;
+                font-size: 7pt;
+                color: var(--text-primary) !important;
+            }
+
+            /* Secciones ultra compactas */
+            .section {
+                background: var(--bg-card) !important;
+                border: 1px solid var(--border-color);
+                padding: 8px 12px;
+                margin-bottom: 6px;
+                box-shadow: none !important;
+            }
+
+            .section-title {
+                font-size: 9pt;
+                color: var(--accent-primary) !important;
+                margin-bottom: 8px;
+            }
+
+            /* Certificaciones compactas */
+            .certs-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+            }
+
+            .cert-badge {
+                background: var(--bg-secondary) !important;
+                padding: 6px;
+                border: 1px solid var(--border-color);
+            }
+
+            .cert-badge .cert-verify {
+                display: none;
+            }
+
+            .cert-name {
+                font-size: 10pt;
+                color: var(--accent-primary) !important;
+                margin-bottom: 2px;
+            }
+
+            .cert-full {
+                font-size: 6pt;
+            }
+
+            /* Experiencia compacta */
+            .experience-item {
+                margin-bottom: 10px;
+                padding-left: 12px;
+            }
+
+            .experience-item::before {
+                width: 6px;
+                height: 6px;
+                left: -4px;
+                top: 3px;
+                background: var(--accent-primary) !important;
+                box-shadow: none !important;
+            }
+
+            .company-name {
+                font-size: 10pt;
+                margin-bottom: 0;
+            }
+
+            .job-date {
+                font-size: 7pt;
+                margin-bottom: 5px;
+            }
+
+            .job-role {
+                font-size: 8pt;
+                margin-bottom: 4px;
+                margin-top: 8px !important;
+                padding-left: 8px;
+                color: var(--accent-secondary) !important;
+            }
+
+            .job-details {
+                font-size: 7pt;
+                margin-left: 0;
+            }
+
+            .job-details li {
+                margin-bottom: 1px;
+                padding-left: 10px;
+            }
+
+            /* Skills compactas en 4 columnas */
+            .skills-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
+            }
+
+            .skill-category h4 {
+                font-size: 7pt;
+                margin-bottom: 4px;
+                color: var(--accent-secondary) !important;
+            }
+
+            .skill-category h4 i {
+                display: none;
+            }
+
+            .skill-tags {
+                gap: 3px;
+            }
+
+            .skill-tag {
+                background: var(--bg-secondary) !important;
+                font-size: 6.5pt;
+                padding: 2px 5px;
+                color: var(--text-primary) !important;
+            }
+
+            /* Educación ultra compacta */
+            .edu-item {
+                margin-bottom: 6px;
+                padding-bottom: 6px;
+                gap: 8px;
+            }
+
+            .edu-year {
+                font-size: 7pt;
+                min-width: 70px;
+            }
+
+            .edu-content h4 {
+                font-size: 8pt;
+                margin-bottom: 1px;
+            }
+
+            .edu-content .institution {
+                font-size: 7pt;
+                margin-bottom: 2px;
+            }
+
+            .edu-content p {
+                font-size: 7pt;
+            }
+
+            /* Languages compacto */
+            .two-column {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .lang-item {
+                padding: 3px 0;
+                font-size: 8pt;
+            }
+
+            .lang-level {
+                font-size: 7pt;
+            }
+
+            .achievement {
+                padding: 6px 8px;
+                font-size: 7pt;
+            }
+
+            a {
+                color: var(--accent-primary) !important;
+                text-decoration: none;
+            }
+
+            /* Márgenes mínimos */
+            @page {
+                margin: 8mm;
+                size: A4;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2rem;
+            }
+
+            .certs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid, .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .edu-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="name">Jesús Ávila</h1>
+            <p class="title">Offensive Security Professional | Penetration Tester</p>
+            <div class="contact-links">
+                <a href="/cdn-cgi/l/email-protection#7913180303570a0c14180b100f18391e14181015571a1614">
+                    <i class="fas fa-envelope"></i>
+                    <span class="__cf_email__" data-cfemail="dfb5bea5a5f1acaab2beadb6a9be9fb8b2beb6b3f1bcb0b2">[email&#160;protected]</span>
+                </a>
+                <a href="https://www.linkedin.com/in/jes%C3%BAs-%C3%A1vila-sumariva-ab1b43176/" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                    LinkedIn
+                </a>
+                <a href="https://daffi1238.github.io" target="_blank">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+                <a href="https://app.hackthebox.com/profile/410051" target="_blank">
+                    <i class="fas fa-cube"></i>
+                    HackTheBox
+                </a>
+            </div>
+        </header>
+
+        <!-- Certifications -->
+        <section class="section">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certs-grid">
+                <a href="https://www.credential.net/fa13b230-1eba-4626-838e-847799f8e400#acc.2XKiCoO7" target="_blank" class="cert-badge">
+                    <div class="cert-name">OSCP</div>
+                    <div class="cert-full">Offensive Security<br>Certified Professional</div>
+                    <div class="cert-verify"><i class="fas fa-certificate"></i> Verify</div>
+                </a>
+                <a href="https://credentials.offsec.com/32fe5128-df39-4f49-b392-516eeef6311b" target="_blank" class="cert-badge">
+                    <div class="cert-name">OSEP</div>
+                    <div class="cert-full">OffSec Experienced<br>Penetration Tester</div>
+                    <div class="cert-verify"><i class="fas fa-certificate"></i> Verify</div>
+                </a>
+                <a href="https://badges.parchment.eu/public/assertions/cC0QodB5RUGlZd1hzvLrpw" target="_blank" class="cert-badge">
+                    <div class="cert-name">CRTO</div>
+                    <div class="cert-full">Certified Red Team<br>Operator</div>
+                    <div class="cert-verify"><i class="fas fa-certificate"></i> Verify</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="section">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="experience-item">
+                <div class="company-name">Deloitte</div>
+                <div class="job-date">Jul 2022 — Present</div>
+                
+                <div class="job-role">Experienced Senior Penetration Tester</div>
+                <div class="job-date" style="font-size: 0.8rem; margin-top: -8px; margin-bottom: 12px;">Jul 2024 — Present</div>
+                <ul class="job-details">
+                    <li>Perform security assessments across web applications, APIs, and mobile platforms</li>
+                    <li>Conduct security reviews of commercial CRM systems (Salesforce, SAP, Dynamics, etc.)</li>
+                    <li>Lead external perimeter reconnaissance and scope definition for offensive engagements</li>
+                    <li>Deliver on-site offensive security services internationally, including engagements in USA and LATAM</li>
+                </ul>
+
+                <div class="job-role" style="margin-top: 20px;">Team Lead — Internal Network Penetration Tester</div>
+                <div class="job-date" style="font-size: 0.8rem; margin-top: -8px; margin-bottom: 12px;">Feb 2023 — Jul 2024</div>
+                <ul class="job-details">
+                    <li>Led global vulnerability assessments across internal network perimeters, identifying and mitigating critical security risks</li>
+                    <li>Designed and executed n-day vulnerability discovery and exploitation campaigns using custom-built tools</li>
+                    <li>Developed visibility and segmentation strategies to reduce lateral movement risks across enterprise environments</li>
+                    <li>Created automated tooling for large-scale vulnerability exploitation, improving team efficiency</li>
+                </ul>
+
+                <div class="job-role" style="margin-top: 20px;">Penetration Tester</div>
+                <div class="job-date" style="font-size: 0.8rem; margin-top: -8px; margin-bottom: 12px;">Jul 2022 — Feb 2023</div>
+                <ul class="job-details">
+                    <li>Conducted security audits for cloud environments, web applications, mobile apps, and APIs</li>
+                    <li>Developed custom automation tools using Python and Bash for vulnerability detection and exploitation</li>
+                    <li>Performed internal/external infrastructure testing, Active Directory assessments, and Wi-Fi audits</li>
+                    <li>Collaborated with cross-functional teams to provide remediation strategies and enhance client security postures</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="company-name">Schneider Electric</div>
+                <div class="job-date">Sep 2021 — Jun 2022</div>
+                <div class="job-role">Network Engineer</div>
+                <ul class="job-details">
+                    <li>Designed and implemented cybersecurity labs for internal training programs</li>
+                    <li>Managed enterprise VoIP infrastructures and deployed secure network environments</li>
+                    <li>Monitored and analyzed network traffic to identify potential security vulnerabilities</li>
+                    <li>Implemented KGV/KGB systems and ACLs for physical and logical access control</li>
+                    <li>Deployed and configured surveillance camera systems integrated with access control infrastructure</li>
+                    <li>Prepared and executed Factory Acceptance Tests (FAT) directly with clients, ensuring system compliance</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="company-name">Meridianos</div>
+                <div class="job-date">Feb 2021 — Jun 2021</div>
+                <div class="job-role">Systems Administrator (Internship)</div>
+                <ul class="job-details">
+                    <li>Hardened infrastructure and administered Active Directory environments</li>
+                    <li>Deployed and maintained virtualized servers; implemented backup solutions</li>
+                    <li>Managed containerized environments using Docker, Docker Compose, and custom Dockerfile development</li>
+                    <li>Deployed applications and implemented policies in compliance with GDPR regulations</li>
+                    <li>Administered and maintained Linux servers across the organization</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Technical Skills -->
+        <section class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4><i class="fas fa-crosshairs"></i> Offensive Security</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Web App Pentesting</span>
+                        <span class="skill-tag">API Security</span>
+                        <span class="skill-tag">Active Directory</span>
+                        <span class="skill-tag">Red Teaming</span>
+                        <span class="skill-tag">Wi-Fi Auditing</span>
+                        <span class="skill-tag">Cloud Security</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-tools"></i> Tools & Frameworks</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Burp Suite</span>
+                        <span class="skill-tag">Metasploit</span>
+                        <span class="skill-tag">Cobalt Strike</span>
+                        <span class="skill-tag">Wireshark</span>
+                        <span class="skill-tag">Nmap</span>
+                        <span class="skill-tag">BloodHound</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-code"></i> Development</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">PowerShell</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-book"></i> Methodologies</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">OWASP Top 10</span>
+                        <span class="skill-tag">MITRE ATT&CK</span>
+                        <span class="skill-tag">PTES</span>
+                        <span class="skill-tag">NIST</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="edu-item">
+                <div class="edu-year">2021 — 2022</div>
+                <div class="edu-content">
+                    <h4>Master's Degree in Cybersecurity</h4>
+                    <div class="institution">Universitat Oberta de Catalunya (UOC)</div>
+                    <p>Focus: Penetration Testing, Vulnerability Assessment, Incident Response<br>
+                    Thesis: <a href="https://github.com/daffi1238/TFM_CTF_UOC" target="_blank">Resolution of a CTF Challenge</a></p>
+                </div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-year">2016 — 2021</div>
+                <div class="edu-content">
+                    <h4>B.Sc. Telecommunications Engineering</h4>
+                    <div class="institution">Universidad de Sevilla</div>
+                    <p>Specialization: Telematics and Networks<br>
+                    Thesis: <a href="https://github.com/daffi1238/virtual_network-docker" target="_blank">Analysis of Docker technology for network management</a></p>
+                </div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-year">2018 — 2019</div>
+                <div class="edu-content">
+                    <h4>Erasmus+ Exchange Program</h4>
+                    <div class="institution">Instituto Superior de Engenharia do Porto (ISEP), Portugal</div>
+                    <p>Advanced telecommunications, introduction to offensive cybersecurity</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages & Achievements -->
+        <section class="section">
+            <h2 class="section-title">Languages & Achievements</h2>
+            <div class="two-column">
+                <div>
+                    <div class="lang-item">
+                        <span class="lang-name">Spanish</span>
+                        <span class="lang-level">Native</span>
+                    </div>
+                    <div class="lang-item">
+                        <span class="lang-name">English</span>
+                        <span class="lang-level">Full Professional</span>
+                    </div>
+                    <div class="lang-item">
+                        <span class="lang-name">Portuguese</span>
+                        <span class="lang-level">Full Professional</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="achievement">
+                        <i class="fas fa-trophy"></i>
+                        <strong>2nd Place</strong> — CTF Competition by Schneider Electric & NUWE
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Print Button -->
+    <button class="print-btn" onclick="window.print()" title="En el diálogo de impresión: Más opciones → Desmarcar 'Encabezados y pies de página'">
+        <i class="fas fa-file-pdf"></i>
+        Export PDF
+    </button>
+    
+    <div class="print-tip">
+        <i class="fas fa-info-circle"></i>
+        <span>Tip: En el diálogo de impresión, ve a "Más opciones" y desmarca "Encabezados y pies de página"</span>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s ease-out';
+            observer.observe(section);
+        });
+
+        // Skill tag hover effect
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+            });
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Certification badge glow effect
+        document.querySelectorAll('.cert-badge').forEach(badge => {
+            badge.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 0 20px rgba(0, 255, 157, 0.2)';
+            });
+            badge.addEventListener('mouseleave', function() {
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        // Typing effect for name (optional, runs once)
+        const nameElement = document.querySelector('.name');
+        const originalName = nameElement.textContent;
+        
+        function typeWriter(element, text, speed = 100) {
+            element.textContent = '';
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Run typing effect on page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                typeWriter(nameElement, originalName, 80);
+            }, 300);
+        });
+
+        // Keyboard shortcut for print (Ctrl+P already works, but adding visual feedback)
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                const btn = document.querySele
